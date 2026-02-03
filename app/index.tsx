@@ -17,19 +17,13 @@ const slides = [
 
 export default function Screen() {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
-
-
   const offsetX = useSharedValue(0);
-  const slidesLength = slides.length;
-  const scrolledContainerWidth = slidesLength * windowWidth;
-
 
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event) => {
       offsetX.value = event.contentOffset.x;
     },
   });
-
 
   return (
     <SafeAreaView style={styles.container}>
@@ -46,18 +40,17 @@ export default function Screen() {
       </View>
 
       <Animated.ScrollView
-        horizontal={true}
-        pagingEnabled={true}
+        horizontal
+        pagingEnabled
         showsHorizontalScrollIndicator={false}
         onScroll={scrollHandler}
         scrollEventThrottle={16}
-        style={{ flex: 1 }}
+        style={styles.scrollView}
+        contentContainerStyle={{ width: slides.length * windowWidth }}
       >
-        <Animated.View style={[styles.carouselContent, { width: scrolledContainerWidth }]}>
-          {slides.map((slide) => (
-            <Slide key={slide.id} text={slide.text} width={windowWidth} height={windowHeight} frontImage={slide.frontImage} />
-          ))}
-        </Animated.View>
+        {slides.map((slide) => (
+          <Slide key={slide.id} text={slide.text} width={windowWidth} height={windowHeight} frontImage={slide.frontImage} />
+        ))}
       </Animated.ScrollView>
 
       <View style={styles.indicatorContainer}>
@@ -73,11 +66,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-
-  carouselContent: {
+  scrollView: {
+    flex: 1,
     flexDirection: 'row',
   },
-
   indicatorContainer: {
     position: 'absolute',
     bottom: 40,
@@ -88,8 +80,5 @@ const styles = StyleSheet.create({
   bgContainer: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: '#000',
-  },
-  bgImage: {
-    ...StyleSheet.absoluteFillObject,
   },
 });

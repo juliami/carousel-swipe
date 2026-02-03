@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 interface DotProps {
   index: number;
@@ -11,10 +11,10 @@ const Dot = ({ index, offsetX, windowWidth }: DotProps) => {
   const animatedStyle = useAnimatedStyle(() => {
     const currentIndex = Math.round(offsetX.value / windowWidth);
     const isActive = currentIndex === index;
-    
+
     return {
-      transform: [{ scale: isActive ? 1.4 : 0.8 }],
-      opacity: isActive ? 1 : 0.5,
+      transform: [{ scale: withTiming(isActive ? 1.4 : 0.8, { duration: 200 }) }],
+      opacity: withTiming(isActive ? 1 : 0.5, { duration: 200 }),
     };
   });
   
