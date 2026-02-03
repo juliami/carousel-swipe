@@ -2,6 +2,9 @@
 
 An animated onboarding carousel built with React Native and React Native Reanimated. This is a learning project to explore animations and gesture handling in React Native.
 
+https://github.com/user-attachments/assets/d7277a31-6e8f-4bab-9644-65f5d2c8e3b0
+
+
 ## Features
 
 - Horizontal swipeable carousel with paging
