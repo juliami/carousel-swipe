@@ -1,8 +1,36 @@
-# Welcome to your Expo app 👋
+# Carousel Swipe
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+An animated onboarding carousel built with React Native and React Native Reanimated. This is a learning project to explore animations and gesture handling in React Native.
 
-## Get started
+## Features
+
+- Horizontal swipeable carousel with paging
+- Animated background image transitions with fade effects
+- Animated dot indicators that scale and fade based on current slide
+- Smooth 60fps animations running on the UI thread
+
+## Reanimated Concepts Used
+
+This project demonstrates several key Reanimated concepts:
+
+- **Shared Values** (`useSharedValue`) - Storing scroll position that can be read from both JS and UI threads
+- **Animated Styles** (`useAnimatedStyle`) - Creating reactive styles that update based on shared values
+- **Scroll Handlers** (`useAnimatedScrollHandler`) - Tracking scroll events efficiently on the UI thread
+- **Timing Animations** (`withTiming`) - Smooth fade transitions for background images and dot indicators
+- **Animated Components** (`Animated.createAnimatedComponent`) - Wrapping native components to support animated styles
+
+## Project Structure
+
+```
+app/
+  index.tsx          # Main carousel screen
+components/
+  BGImage.tsx        # Animated background image with fade effect
+  Dot.tsx            # Animated pagination dot
+  Slide.tsx          # Individual slide content
+```
+
+## Getting Started
 
 1. Install dependencies
 
@@ -13,38 +41,20 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 2. Start the app
 
    ```bash
-   npx expo start
+   npm start
    ```
 
-In the output, you'll find options to open the app in a
+3. Run on your device using [Expo Go](https://expo.dev/go) or a development build
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Tech Stack
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- [Expo](https://expo.dev) (SDK 54)
+- [React Native](https://reactnative.dev) 0.81
+- [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/) 4.1
+- TypeScript
 
-## Get a fresh project
+## Learning Resources
 
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- [Reanimated Documentation](https://docs.swmansion.com/react-native-reanimated/)
+- [Reanimated Fundamentals](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started)
+- [Expo Documentation](https://docs.expo.dev/)
